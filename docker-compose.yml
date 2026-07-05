@@ -9,6 +9,8 @@ services:
       MYSQL_DATABASE: qdpm
       MYSQL_USER: jeremy
       MYSQL_PASSWORD: "AILabAdmin2022!"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
     restart: unless-stopped
 
   apache:
