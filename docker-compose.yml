@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: local-exploit-lab-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: qdpm
+      MYSQL_USER: jeremy
+      MYSQL_PASSWORD: "AILabAdmin2022!"
+    restart: unless-stopped
+
+  apache:
+    build: .
+    container_name: local-exploit-lab
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    restart: unless-stopped
